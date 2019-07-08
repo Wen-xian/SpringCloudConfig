@@ -1,0 +1,87 @@
+ffmpeg:
+  url: D://ffmpeg/ffmpeg-20180803-476fd6b-win64-static/ffmpeg-20180803-476fd6b-win64-static/bin/ffmpeg.exe
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true #是否支持重试
+          max-attempts: 3
+          initial-interval: 5000 #重试间隔，毫秒
+        default-requeue-rejected: false #失败次数不超过3次时是否放回队列
+
+  datasource:
+    druid:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/springboot?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      username: root
+      password:
+      # 初始化连接大小
+      initial-size: 5
+      # 最小空闲连接数
+      min-idle: 5
+      max-active: 20
+      max-wait: 30000
+      # 可关闭的空闲连接间隔时间
+      time-between-eviction-runs-millis: 60000
+      # 配置连接在池中的最小生存时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: select '1' from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      # 配置监控统计拦截的filters
+      filters: stat
+      connectionProperties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000'
+
+  #配置 Jpa
+  jpa:
+      hibernate:
+        # 生产环境设置成 none，避免程序运行时自动更新数据库结构
+        ddl-auto: update  #update
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  #不加这句则默认为myisam引擎
+
+# 异步线程配置
+# 配置核心线程数
+async:
+  executor:
+    thread.core_pool_size: 5
+# 配置最大线程数
+    thread.max_pool_size: 5
+# 配置队列大小
+    thread.queue_capacity: 99999
+# 配置线程池中的线程的名称前缀
+    thread.name.prefix: async-service-
+
+feign:
+  hystrix:
+    enabled: true
+
+###配置请求超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 4000
+  ###指的是建立连接后从服务器读取到可用资源所用的时间。
+  ConnectTimeout: 1000
+  MaxAutoRetries: 1 #最大重试次数，当Eureka中可以找到服务，但是服务连不上时将会重试
+  MaxAutoRetriesNextServer: 1 #切换实例的重试次数
+
