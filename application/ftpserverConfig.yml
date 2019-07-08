@@ -1,0 +1,9 @@
+ftp:
+  host: 192.168.1.86
+  port: 8765
+  username: ftpuser
+  password: 123456
+  encoding: utf-8
+  passiveMode: true
+  connectTimeout: 3000
+  bufferSize: 1048576
