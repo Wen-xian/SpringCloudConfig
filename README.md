@@ -1,0 +1,2 @@
+# SpringCloudConfig
+本仓库用于SpringCloud分布式配置中心
