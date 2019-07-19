@@ -11,6 +11,7 @@ spring:
           max-attempts: 3
           initial-interval: 5000
         default-requeue-rejected: false
+        acknowledge-mode: manual
 
   datasource:
     druid:
