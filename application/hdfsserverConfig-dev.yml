@@ -10,7 +10,7 @@ spring:
           enabled: true
           max-attempts: 3
           initial-interval: 5000
-        default-requeue-rejected: false
+        default-requeue-rejected: true
         acknowledge-mode: manual
 
   datasource:
