@@ -10,7 +10,7 @@ spring:
           enabled: true
           max-attempts: 3
           initial-interval: 5000
-        default-requeue-rejected: true
+        default-requeue-rejected: true  #true表示消费端修改的消息也会放回MQ里，如果false的话就不会，会使用原来的消息
         acknowledge-mode: manual
 
   datasource:
