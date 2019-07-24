@@ -14,6 +14,7 @@ spring:
           max-attempts: 3
           initial-interval: 5000 #重试间隔，毫秒
         default-requeue-rejected: false #失败次数不超过3次时是否放回队列
+        acknowledge-mode: manual
 
   datasource:
     druid:
