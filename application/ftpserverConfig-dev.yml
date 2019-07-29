@@ -7,3 +7,46 @@ ftp:
   passiveMode: true
   connectTimeout: 3000
   bufferSize: 1048576
+  
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true #是否支持重试
+          max-attempts: 3
+          initial-interval: 5000 #重试间隔，毫秒
+        default-requeue-rejected: false #失败次数不超过3次时是否放回队列
+        acknowledge-mode: manual
+  datasource:
+    druid:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/springboot?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      username: root
+      password:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select '1' from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      connectionProperties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000'
+
+  jpa:
+      hibernate:
+        ddl-auto: update  #update
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
