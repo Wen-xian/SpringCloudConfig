@@ -91,4 +91,16 @@ ribbon:
   MaxAutoRetries: 1 #最大重试次数，当Eureka中可以找到服务，但是服务连不上时将会重试
   MaxAutoRetriesNextServer: 1 #切换实例的重试次数
   
+# 异步线程配置
+# 配置核心线程数
+async:
+  executor:
+    thread.core_pool_size: 5
+# 配置最大线程数
+    thread.max_pool_size: 5
+# 配置队列大小
+    thread.queue_capacity: 99999
+# 配置线程池中的线程的名称前缀
+    thread.name.prefix: async-service-
+  
 
