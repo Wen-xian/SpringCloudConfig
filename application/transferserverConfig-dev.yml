@@ -2,6 +2,9 @@ ffmpeg:
   url: D://ffmpeg/ffmpeg-20180803-476fd6b-win64-static/ffmpeg-20180803-476fd6b-win64-static/bin/ffmpeg.exe
 
 spring:
+  zipkin: 
+    base-url: http://localhost:9411
+    
   rabbitmq:
     host: localhost
     port: 5672
