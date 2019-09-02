@@ -8,7 +8,7 @@ spring:
     sampler:
       percentage: 1.0
   rabbitmq:
-    host: localhost
+    host: 192.168.1.159
     port: 5672
     username: guest
     password: guest
@@ -61,7 +61,7 @@ spring:
   redis:
       #数据库索引
       database: 0
-      host: 127.0.0.1
+      host: 192.168.1.159
       port: 6379
       password:
       jedis:
@@ -119,7 +119,7 @@ zookeeper:
   #重试次数
   maxRetries: 3
   #zookeeper服务连接id与端口
-  connectString: 192.168.238.201:2181
+  connectString: 192.168.1.159:2181
   #会话超时时间，单位毫秒
   sessionTimeoutMs: 5000
   #连接创建超时时间，单位毫秒
