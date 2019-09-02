@@ -10,7 +10,7 @@ ftp:
   
 spring:
   rabbitmq:
-    host: localhost
+    host: 192.168.1.159
     port: 5672
     username: guest
     password: guest
@@ -54,7 +54,7 @@ spring:
   redis:
       #数据库索引
       database: 0
-      host: 127.0.0.1
+      host: 192.168.1.159
       port: 6379
       password:
       jedis:
