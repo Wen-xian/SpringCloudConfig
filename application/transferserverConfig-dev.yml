@@ -1,5 +1,5 @@
 ffmpeg:
-  url: D://ffmpeg/ffmpeg-20180803-476fd6b-win64-static/ffmpeg-20180803-476fd6b-win64-static/bin/ffmpeg.exe
+  url: C://dev/ffmpeg/ffmpeg-20180803-476fd6b-win64-static/bin/ffmpeg.exe
 
 spring:
   zipkin: 
